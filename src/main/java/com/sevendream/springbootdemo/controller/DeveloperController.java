@@ -2,6 +2,8 @@ package com.sevendream.springbootdemo.controller;
 
 import com.sevendream.springbootdemo.bean.BaseResult;
 import com.sevendream.springbootdemo.bean.Developer;
+import com.sevendream.springbootdemo.common.CommonException;
+import com.sevendream.springbootdemo.common.ExceptionEnum;
 import com.sevendream.springbootdemo.respository.DeveloperRepository;
 import com.sevendream.springbootdemo.service.DeveloperService;
 import com.sevendream.springbootdemo.utils.ResultUtils;
@@ -103,10 +105,9 @@ public class DeveloperController {
      * @return
      */
     @PostMapping(value = "addAGirl")
-    public BaseResult<Developer> addAGirl(@Valid Developer developer, BindingResult bindingResult){
+    public BaseResult<Developer> addAGirl(@Valid Developer developer, BindingResult bindingResult) throws Exception {
         if(bindingResult.hasErrors()){
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return ResultUtils.fail(bindingResult.getFieldError().getCode(),bindingResult.getFieldError().getDefaultMessage());
+            throw new CommonException(ExceptionEnum.EXCEPTION_FAIL.getCode(),bindingResult.getFieldError().getDefaultMessage());
         }
         return ResultUtils.success(developerRepository.save(developer));
     }

@@ -1,5 +1,6 @@
-package com.sevendream.springmvcdemo;
+package com.sevendream.springbootdemo.respository;
 
+import com.sevendream.springbootdemo.bean.Developer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

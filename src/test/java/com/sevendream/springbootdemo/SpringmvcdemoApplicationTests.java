@@ -1,4 +1,4 @@
-package com.sevendream.springmvcdemo;
+package com.sevendream.springbootdemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

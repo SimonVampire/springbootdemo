@@ -1,4 +1,4 @@
-package com.sevendream.springmvcdemo;
+package com.sevendream.springbootdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.sevendream.springmvcdemo;
+package com.sevendream.springbootdemo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

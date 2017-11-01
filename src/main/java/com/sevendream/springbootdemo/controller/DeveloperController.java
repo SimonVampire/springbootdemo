@@ -1,8 +1,15 @@
-package com.sevendream.springmvcdemo;
+package com.sevendream.springbootdemo.controller;
 
+import com.sevendream.springbootdemo.bean.BaseResult;
+import com.sevendream.springbootdemo.bean.Developer;
+import com.sevendream.springbootdemo.respository.DeveloperRepository;
+import com.sevendream.springbootdemo.service.DeveloperService;
+import com.sevendream.springbootdemo.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -89,5 +96,18 @@ public class DeveloperController {
         developerService.batchInsert();
     }
 
-
+    /**
+     * （含表单验证）增加一个开发者
+     * @param developer
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping(value = "addAGirl")
+    public BaseResult<Developer> addAGirl(@Valid Developer developer, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return ResultUtils.fail(bindingResult.getFieldError().getCode(),bindingResult.getFieldError().getDefaultMessage());
+        }
+        return ResultUtils.success(developerRepository.save(developer));
+    }
 }
